@@ -1,39 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>Situs Sedang Diperbaiki</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #0d1117;
-      color: #00ff99;
-      font-family: Arial, sans-serif;
-    }
-    .box {
-      border: 2px solid #00ff99;
-      padding: 30px;
-      border-radius: 10px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2em;
-      margin: 0 0 10px;
-    }
-    p {
-      margin: 0;
-      font-size: 1.2em;
-    }
-  </style>
-</head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Situs Sedang Diperbaiki</title>
+<style>
+  :root { --bg:#0d1117; --fg:#00ff99; }
+  html,body { height:100%; margin:0; }
+  body { display:grid; place-items:center; background:var(--bg); color:var(--fg); font:16px/1.4 system-ui,Segoe UI,Arial; }
+  .card { text-align:center; padding:28px 32px; border:2px solid var(--fg); border-radius:14px; max-width:520px; }
+  .logo { width:96px; height:auto; display:none; margin:0 auto 12px; }
+</style>
 <body>
-  <div class="box">
+  <main class="card">
+    <!-- Jika nanti kamu upload logo.png di root repo, gambar ini otomatis tampil -->
+    <img class="logo" id="logo" src="logo.png" alt="Logo">
     <h1>⚡ Situs Sedang Diperbaiki ⚡</h1>
     <p>Kami akan segera kembali online.</p>
-  </div>
+  </main>
+  <script>
+    // Tampilkan logo.png hanya jika ada
+    (async () => {
+      try {
+        const r = await fetch('logo.png', { method:'HEAD' });
+        if (r.ok) document.getElementById('logo').style.display = 'block';
+      } catch {}
+    })();
+  </script>
 </body>
 </html>
